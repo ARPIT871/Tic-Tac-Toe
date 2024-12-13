@@ -18,7 +18,15 @@ jobs:
 
       - run: npm i
       - run: npm run build
-      
+
+      - name: Check if SSH key secret is set
+        run: |
+          if [ -z "${{ secrets.SSH_KEY_AWS }}" ]; then
+            echo "SSH Key secret is not set!"
+          else
+            echo "SSH Key secret is set."
+          fi
+
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
@@ -28,4 +36,4 @@ jobs:
           remote_path: /var/www/test/
           remote_host: 13.233.155.120
           remote_user: ubuntu
-          remote_key: "SHA256:hZ5QofBnB3Lnq18/9L2jz1NXzqVWDCoVWouXvV76jy8"
+          remote_key: "{{secrets.SSH_KEY_AWS}}"
