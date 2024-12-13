@@ -28,4 +28,4 @@ jobs:
           remote_path: /var/www/test/
           remote_host: 13.233.155.120
           remote_user: ubuntu
-          remote_key: "${{ secrets.SSH_KEY_AWS }}"
+          remote_key: "SHA256:hZ5QofBnB3Lnq18/9L2jz1NXzqVWDCoVWouXvV76jy8"
